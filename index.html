@@ -1,4 +1,434 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FREEDER 2</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f2f4f8;
+      color: #17202a;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      padding: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      color: #1877f2;
+      font-size: 26px;
+    }
+
+    /* Profile */
+    .profile {
+      background: white;
+      margin: 15px;
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 2px 8px #00000015;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1877f2, #a52cff, #ff8a00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .profile h2 {
+      margin-top: 12px;
+      font-size: 23px;
+    }
+
+    .username {
+      color: #777;
+      margin-top: 5px;
+    }
+
+    .bio {
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .edit-button {
+      margin-top: 15px;
+      padding: 11px 22px;
+      border: none;
+      border-radius: 20px;
+      background: #1877f2;
+      color: white;
+      font-size: 15px;
+    }
+
+    /* Create Post */
+    .create-post {
+      background: white;
+      margin: 15px;
+      padding: 15px;
+      border-radius: 18px;
+    }
+
+    textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 16px;
+      resize: none;
+    }
+
+    .post-button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #1877f2;
+      color: white;
+      font-size: 16px;
+    }
+
+    /* Post */
+    .post {
+      background: white;
+      margin: 15px;
+      padding: 18px;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px #00000015;
+    }
+
+    .post h3 {
+      margin-bottom: 8px;
+    }
+
+    .post p {
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .actions button {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      background: #eef1f5;
+    }
+
+    /* Bottom Navigation */
+    nav {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 5px;
+    }
+
+    nav button {
+      border: none;
+      background: none;
+      color: #555;
+      font-size: 13px;
+    }
+
+    nav button:first-child {
+      color: #1877f2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>FREEDER 2</h1>
+  </header>
+
+
+  <!-- Profile -->
+  <section class="profile">
+
+    <div class="avatar">
+      F2
+    </div>
+
+    <h2 id="profileName">
+      FREEDER 2
+    </h2>
+
+    <div class="username">
+      @freeder2
+    </div>
+
+    <div class="bio">
+      স্বাধীনতা • বন্ধুত্ব • ডিজিটাল সংযোগ
+    </div>
+
+    <button
+      class="edit-button"
+      onclick="editProfile()">
+
+      Edit Profile
+
+    </button>
+
+  </section>
+
+
+  <!-- Create Post -->
+  <section class="create-post">
+
+    <textarea
+      id="postText"
+      rows="3"
+      placeholder="আপনার মনে কী আছে?">
+    </textarea>
+
+    <button
+      class="post-button"
+      onclick="createPost()">
+
+      Post
+
+    </button>
+
+  </section>
+
+
+  <!-- Posts -->
+  <div id="posts">
+
+    <article class="post">
+
+      <h3>
+        FREEDER 2
+      </h3>
+
+      <p>
+        🎉 স্বাগতম FREEDER 2-এ!
+        এটি আমাদের নতুন Social Media Platform।
+      </p>
+
+      <div class="actions">
+
+        <button onclick="likePost(this)">
+          ❤️ Like
+        </button>
+
+        <button onclick="commentPost()">
+          💬 Comment
+        </button>
+
+        <button onclick="sharePost()">
+          ↗️ Share
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- Bottom Menu -->
+  <nav>
+
+    <button>
+      🏠<br>
+      Home
+    </button>
+
+    <button>
+      🔍<br>
+      Search
+    </button>
+
+    <button>
+      ➕<br>
+      Create
+    </button>
+
+    <button>
+      💬<br>
+      Messages
+    </button>
+
+    <button>
+      👤<br>
+      Profile
+    </button>
+
+  </nav>
+
+
+  <script>
+
+    /* Create Post */
+
+    function createPost() {
+
+      const text =
+        document
+        .getElementById("postText")
+        .value
+        .trim();
+
+      if (text === "") {
+
+        alert("আগে কিছু লিখুন!");
+
+        return;
+      }
+
+      const post =
+        document.createElement("article");
+
+      post.className = "post";
+
+      post.innerHTML = `
+
+        <h3>
+          আপনি
+        </h3>
+
+        <p>
+          ${text}
+        </p>
+
+        <div class="actions">
+
+          <button onclick="likePost(this)">
+            ❤️ Like
+          </button>
+
+          <button onclick="commentPost()">
+            💬 Comment
+          </button>
+
+          <button onclick="sharePost()">
+            ↗️ Share
+          </button>
+
+        </div>
+
+      `;
+
+      document
+        .getElementById("posts")
+        .prepend(post);
+
+      document
+        .getElementById("postText")
+        .value = "";
+
+    }
+
+
+    /* Like */
+
+    function likePost(button) {
+
+      if (
+        button.innerText.includes("Liked")
+      ) {
+
+        button.innerText = "❤️ Like";
+
+      } else {
+
+        button.innerText = "❤️ Liked";
+
+      }
+
+    }
+
+
+    /* Comment */
+
+    function commentPost() {
+
+      const comment =
+        prompt(
+          "আপনার Comment লিখুন:"
+        );
+
+      if (comment) {
+
+        alert(
+          "Comment যোগ করা হয়েছে!"
+        );
+
+      }
+
+    }
+
+
+    /* Share */
+
+    function sharePost() {
+
+      alert(
+        "Share feature আমরা পরের ধাপে তৈরি করব।"
+      );
+
+    }
+
+
+    /* Edit Profile */
+
+    function editProfile() {
+
+      const name =
+        prompt(
+          "আপনার নতুন নাম লিখুন:"
+        );
+
+      if (name) {
+
+        document
+          .getElementById("profileName")
+          .innerText = name;
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
